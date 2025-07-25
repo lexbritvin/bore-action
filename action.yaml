@@ -1,0 +1,36 @@
+name: 'Bore Tunnel'
+description: 'Expose a port using Bore tunnel (Windows / Linux / macOS)'
+branding:
+  icon: 'globe'
+  color: 'blue'
+
+inputs:
+  version:
+    description: 'Bore version to download (default: latest)'
+    required: false
+    default: 'latest'
+  port:
+    description: 'Local port to expose'
+    required: true
+  server:
+    description: 'Bore server to use'
+    required: false
+    default: 'bore.pub'
+  secret:
+    description: 'Secret for authentication (optional)'
+    required: false
+  timeout:
+    description: 'Timeout in seconds to wait for tunnel establishment'
+    required: false
+    default: '30'
+
+outputs:
+  host:
+    description: 'The public host address'
+  port:
+    description: 'The public port number'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+  post: 'dist/index.js'

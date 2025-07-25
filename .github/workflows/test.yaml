@@ -1,0 +1,24 @@
+name: Test Action
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-bore:
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        - windows-latest
+        - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bore Tunnel
+        uses: ./
+        with:
+          port: 7000
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
