@@ -27712,20 +27712,18 @@ async function main() {
     core.info("🚀 Starting bore tunnel setup...");
 
     // Set up paths
-    const actionPath = process.env.GITHUB_ACTION_PATH || path.join(__dirname, "..");
-    const scriptsDir = path.join(actionPath, "scripts");
-    const installScript = path.join(scriptsDir, "install.sh");
+    const installScript = __nccwpck_require__.ab + "install.sh";
     const logPath = path.join(process.env.RUNNER_TEMP, `bore_${server}_${port}.log`);
     const pidPath = path.join(process.env.RUNNER_TEMP, `bore_${server}_${port}.pid`);
 
     // Make scripts executable (Unix only)
     if (os.platform() !== "win32") {
-      await exec.exec("chmod", ["+x", installScript]);
+      await exec.exec("chmod", ["+x", __nccwpck_require__.ab + "install.sh"]);
     }
 
     // Install bore binary first
     core.info("📦 Installing bore binary...");
-    const installExitCode = await exec.exec("bash", [installScript, version]);
+    const installExitCode = await exec.exec("bash", [__nccwpck_require__.ab + "install.sh", version]);
 
     if (installExitCode !== 0) {
       throw new Error(`Bore installation failed with exit code ${installExitCode}`);

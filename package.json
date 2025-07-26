@@ -4,7 +4,7 @@
   "description": "GitHub Action to setup bore tunnels",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/index.js -o dist --license licenses.txt"
+    "build": "ncc build src/index.js -a -o dist --license licenses.txt"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",

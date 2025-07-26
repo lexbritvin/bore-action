@@ -155,9 +155,7 @@ async function main() {
     core.info("🚀 Starting bore tunnel setup...");
 
     // Set up paths
-    const actionPath = process.env.GITHUB_ACTION_PATH || path.join(__dirname, "..");
-    const scriptsDir = path.join(actionPath, "scripts");
-    const installScript = path.join(scriptsDir, "install.sh");
+    const installScript = path.join(__dirname, "..", "scripts", "install.sh");
     const logPath = path.join(process.env.RUNNER_TEMP, `bore_${server}_${port}.log`);
     const pidPath = path.join(process.env.RUNNER_TEMP, `bore_${server}_${port}.pid`);
 
